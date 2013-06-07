@@ -1,0 +1,251 @@
+/* =============================================================================
+   Variables
+   ========================================================================== */  
+
+$maxpagewidth: 100%;
+$col-pad: 5%;
+$section-margin: 3.5em;
+
+$light-grey: #cbcbcb;
+$dark-grey: #222;
+
+@mixin color-transition {  
+  -webkit-transition: background-color 0.1s ease-in-out; 
+  -moz-transition: background-color 0.1s ease-in-out; 
+  -o-transition: background-color 0.1s ease-in-out; 
+  transition: background-color 0.1s ease-in-out; 
+}
+
+@mixin opacity-transition {  
+  -webkit-transition: opacity 0.3s ease-in-out; 
+  -moz-transition: opacity 0.3s ease-in-out; 
+  -o-transition: opacity 0.3s ease-in-out; 
+  transition: opacity 0.3s ease-in-out; 
+}
+
+@mixin bg-color-transition {  
+  -webkit-transition: background-color 0.3s ease-in-out; 
+  -moz-transition: background-color 0.3s ease-in-out; 
+  -o-transition: background-color 0.3s ease-in-out; 
+  transition: background-color 0.3s ease-in-out; 
+}
+
+@mixin opacity {
+	opacity: 0.8;
+}
+
+
+/* ==========================================================================
+   Normalize & HTML5 Boilerplate Base Styles
+   ========================================================================== */
+ 
+@import "normalize.scss";
+
+/* =============================================================================
+   Fonts
+   ========================================================================== */  
+
+@font-face {
+    font-family: 'Chattype-Light';
+    src: url('http://kylegordydesign.com/chatt-crimes-beta/fonts/chatype-thin/chatypethin-webfont.eot');
+    src: url('http://kylegordydesign.com/chatt-crimes-beta/fonts/chatype-thin/chatypethin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://kylegordydesign.com/chatt-crimes-beta/fonts/chatype-thin/chatypethin-webfont.woff') format('woff'),
+         url('http://kylegordydesign.com/chatt-crimes-beta/fonts/chatype-thin/chatypethin-webfont.ttf') format('truetype'),
+         url('http://kylegordydesign.com/chatt-crimes-beta/fonts/chatype-thin/chatypethin-webfont.svg#chatype_thinthin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+
+html, button, input, select, textarea { font-family: 'Chattype-Light', helvetica, arial, sans-serif; color: #222; }
+
+body { padding: 0px; font-family: 'Chattype-Light', helvetica, arial, sans-serif; font-size: 12px; line-height: 1.55; }
+
+::-moz-selection { background: #121212; color: #fff; text-shadow: none; }
+::selection { background: #121212; color: #fff; text-shadow: none; }
+   
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+
+/* =============================================================================
+   Base Grid
+   ========================================================================== */  
+
+.grid {
+  margin: 0;
+  
+  &:after {
+    /* Or @extend clearfix */
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+[class*='col-'] {
+	float: left;
+  padding-right: $col-pad;
+  .grid &:last-of-type {
+  	padding-right: 0;
+  }
+}
+
+.col-1 {
+	width: 100%;
+}
+.col-2-3 {
+	width: 76%;
+}
+.col-1-3 {
+	width: 24%;
+}
+.col-1-2 {
+	width: 100%;
+}
+.col-1-4 {
+	width: 50%;
+}
+.col-1-8 {
+	width: 50%;
+}
+
+/* Outside padding */
+.grid {
+  padding: 0 0 0 $col-pad;
+  [class*='col-']:last-of-type {
+    padding-right: $col-pad;
+  }
+}
+
+
+/* ==========================================================================
+   Map Styles
+   ========================================================================== */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+header {
+	position: relative;
+	width: 100%;
+	background-color: #fff;
+	padding: 2em 0 2em 0;
+	
+	img {
+		float: left;
+		margin-bottom: 1em;
+		max-width: 100%; height: auto; -ms-interpolation-mode:bicubic
+	}
+	
+	img:first-of-type {
+		display: none;
+	}
+	
+}
+
+#map-canvas, #map_canvas {
+  height: 91.1%;
+  clear: both;
+}
+
+#panel {
+	position: relative;
+	float: left;
+	top: 3px;
+  z-index: 6;
+  /* border: 1px solid #999; */
+  
+  button {
+  	float: right;
+	  border: none;
+	  margin: 0 0 .5em .5em;
+	  padding: .5em .5em .5em .5em;
+	  background-color: $light-grey;
+	  @include color-transition;
+  }
+  
+  button:hover {
+		color: #fff;
+  	background-color: #000;
+	}
+  
+}
+
+
+/* ==========================================================================
+   Phablet(ish) Styles
+   ========================================================================== */
+
+@media only screen and (min-width: 500px) {
+
+body {
+	font-size: 14px;
+}
+
+.col-2-3 {
+	width: 100%;
+}
+.col-1-3 {
+	width: 100%;
+}
+
+.icon-mark {
+	display: none;
+}
+
+header img:first-of-type {
+	display: block;
+}
+
+#panel button {
+	float: left;	
+}
+
+}
+
+
+/* ==========================================================================
+   Desktop(ish) Styles
+   ========================================================================== */
+
+@media only screen and (min-width: 970px) {
+
+.col-2-3 {
+	width: 66.66%;
+}
+.col-1-3 {
+	width: 33.33%;
+}
+.col-1-2 {
+	width: 50%;
+}
+.col-1-4 {
+	width: 25%;
+}
+.col-1-8 {
+	width: 12.5%;
+}
+
+body {
+	font-size: 16px;
+}
+
+#panel {
+	float: right;
+	
+	button {
+		float: right;
+	}
+	
+}
+
+}
