@@ -6342,7 +6342,8 @@ new google.maps.LatLng(35.00129891, -85.28735002)
 function initialize() {
   var mapOptions = {
     zoom: 14,
-    center: new google.maps.LatLng(35.04563, -85.30968),
+    // Code below loaded Chattanooga first then proceeded to geolocate your position
+    /* center: new google.maps.LatLng(35.04563, -85.30968), */
     mapTypeId: google.maps.MapTypeId.HYBRID
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
