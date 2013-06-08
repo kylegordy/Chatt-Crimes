@@ -6335,11 +6335,9 @@ new google.maps.LatLng(35.03528792, -85.23723204),
 new google.maps.LatLng(35.01742867, -85.18293315),
 new google.maps.LatLng(35.07025136, -85.30823849),
 new google.maps.LatLng(35.08581021, -85.20959653),
-new google.maps.LatLng(35.00129891, -85.28735002)
-
-  
-  
+new google.maps.LatLng(35.00129891, -85.28735002)  
 ];
+
 
 function initialize() {
   var mapOptions = {
@@ -6347,10 +6345,10 @@ function initialize() {
     center: new google.maps.LatLng(35.04563, -85.30968),
     mapTypeId: google.maps.MapTypeId.HYBRID
   };
-
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
-
+   
+  // Heatmap code
   var pointArray = new google.maps.MVCArray(burglaryData);
 
   heatmap = new google.maps.visualization.HeatmapLayer({
@@ -6360,8 +6358,48 @@ function initialize() {
   });
 
   heatmap.setMap(map);
+  
+	// Geolocation code
+  // Try HTML5 geolocation
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+
+      var infowindow = new google.maps.InfoWindow({
+        map: map,
+        position: pos,
+        content: 'This is where you\'re located dude!'
+      });
+
+      map.setCenter(pos);
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
 }
 
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = 'Error: The Geolocation service failed.';
+  } else {
+    var content = 'Error: Your browser doesn\'t support geolocation.';
+  }
+
+  var options = {
+    map: map,
+    position: new google.maps.LatLng(35.04563, -85.30968),
+    content: content
+  };
+
+  var infowindow = new google.maps.InfoWindow(options);
+  map.setCenter(options.position);
+}
+
+// Button Variables
 function toggleHeatmap() {
   heatmap.setMap(heatmap.getMap() ? null : map);
 }
@@ -6388,4 +6426,5 @@ function changeGradient() {
   });
 }
 
+// Initialize Map
 google.maps.event.addDomListener(window, 'load', initialize);
