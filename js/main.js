@@ -1,6 +1,3 @@
-// Enable the visual refresh
-google.maps.visualRefresh = true;
-
 var map, pointarray, heatmap;
 var burglaryData = [
   
@@ -6377,7 +6374,8 @@ function initialize() {
         map: map,
         position: pos,
         title: 'Your Location',
-        icon: 'http://kylegordydesign.com/chatt-crimes-beta/images/icons/map-icon.png'
+        icon: 'http://kylegordydesign.com/chatt-crimes-beta/images/icons/map-icon.png',
+        animation: google.maps.Animation.DROP
       });
 
       map.setCenter(pos);
