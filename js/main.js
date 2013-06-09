@@ -1,5 +1,7 @@
-var map, pointarray, heatmap;
+// Enable the visual refresh
+google.maps.visualRefresh = true;
 
+var map, pointarray, heatmap;
 var burglaryData = [
   
 new google.maps.LatLng(35.12041333, -85.24626447),
@@ -6340,6 +6342,7 @@ new google.maps.LatLng(35.00129891, -85.28735002)
 
 
 function initialize() {
+	// Global Map Options
   var mapOptions = {
     zoom: 14,
     panControl: false,
@@ -6350,28 +6353,31 @@ function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
    
-  // Heatmap code
+  // Heatmap
   var pointArray = new google.maps.MVCArray(burglaryData);
 
   heatmap = new google.maps.visualization.HeatmapLayer({
     data: pointArray,
     radius: 25,
-    maxIntensity: 10
+    maxIntensity: 10,
+    opacity: 0.75
   });
 
   heatmap.setMap(map);
   
-	// Geolocation code
+	// Geolocation
   // Try HTML5 geolocation
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
-
-      var infowindow = new google.maps.InfoWindow({
+                                      
+      // Geolocation Marker Icon                                 
+      var infowindow = new google.maps.Marker({
         map: map,
         position: pos,
-        content: 'This is where you\'re located dude!'
+        title: 'Your Location',
+        icon: 'http://kylegordydesign.com/chatt-crimes-beta/images/icons/map-icon.png'
       });
 
       map.setCenter(pos);
@@ -6406,6 +6412,7 @@ function toggleHeatmap() {
   heatmap.setMap(heatmap.getMap() ? null : map);
 }
 
+// Change Gradient Button
 function changeGradient() {
   var gradient = [
     'rgba(0, 255, 255, 0)',
