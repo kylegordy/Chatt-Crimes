@@ -1,7 +1,5 @@
-// Enable the visual refresh
-google.maps.visualRefresh = true;
-
 var map, pointarray, heatmap;
+
 var burglaryData = [
   
 new google.maps.LatLng(35.12041333, -85.24626447),
@@ -6341,43 +6339,83 @@ new google.maps.LatLng(35.00129891, -85.28735002)
 ];
 
 
-function initialize() {
-	// Global Map Options
-  var mapOptions = {
+
+
+
+		var MY_MAPTYPE_ID = 'custom_style';
+
+		function initialize() {
+		
+		  var featureOpts = [
+		    {
+		      stylers: [
+		        { hue: '#890000' },
+		        { visibility: 'simplified' },
+		        { gamma: 0.5 },
+		        { weight: 0.5 }
+		      ]
+		    },
+		    {
+		      elementType: 'labels',
+		      stylers: [
+		        { visibility: 'on' }
+		      ]
+		    },
+		    {
+		      featureType: 'water',
+		      stylers: [
+		        { color: '#890000' }
+		      ]
+		    }
+		  ];
+
+
+
+  	var mapOptions = {
     zoom: 14,
     panControl: false,
+    
     // Code below loaded Chattanooga first then proceeded to geolocate your position
     /* center: new google.maps.LatLng(35.04563, -85.30968), */
-    mapTypeId: google.maps.MapTypeId.HYBRID
+    mapTypeId: google.maps.MapTypeId.HYBRID,
+    mapTypeId: MY_MAPTYPE_ID
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
+  
+  // Custom Map code    
+  var styledMapOptions = {
+    name: 'Custom Style'
+  };
+  
+  
+  var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
+
+  map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
+  
    
-  // Heatmap
+  // Heatmap code
   var pointArray = new google.maps.MVCArray(burglaryData);
 
   heatmap = new google.maps.visualization.HeatmapLayer({
     data: pointArray,
     radius: 25,
-    maxIntensity: 10,
-    opacity: 0.75
+    maxIntensity: 10
   });
 
   heatmap.setMap(map);
   
-	// Geolocation
+	// Geolocation code
   // Try HTML5 geolocation
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
-                                      
-      // Geolocation Marker Icon                                 
-      var infowindow = new google.maps.Marker({
+
+      var infowindow = new google.maps.InfoWindow({
         map: map,
         position: pos,
-        title: 'Your Location',
-        icon: 'http://kylegordydesign.com/chatt-crimes-beta/images/icons/map-icon.png'
+        content: 'This is where you\'re located dude!'
       });
 
       map.setCenter(pos);
@@ -6412,7 +6450,6 @@ function toggleHeatmap() {
   heatmap.setMap(heatmap.getMap() ? null : map);
 }
 
-// Change Gradient Button
 function changeGradient() {
   var gradient = [
     'rgba(0, 255, 255, 0)',

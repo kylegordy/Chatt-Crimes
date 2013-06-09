@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<title>Chatt Crimes</title>
 	<link rel="stylesheet" href="css/global.css">
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=visualization"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=true&libraries=visualization"></script>
 	<script src="js/main.js"></script>
 	<link rel="shortcut icon" type="image/x-icon" href="http://kylegordydesign.com/chatt-crimes-beta/images/icons/favicon.ico" />
 	<!-- IOS/Android Touch Icons -->
@@ -24,25 +24,25 @@
 <body>
 	<header class="page-wrap">
 		<div class="grid">
-		
+			<!-- Logo -->
 			<div class="col-1-3">
 				<div class="module">
 					<img src="images/logo.svg" width="315" height="40" alt="Chatt Crime" />
 					<img class="icon-mark" src="images/logo-mark.svg" width="80" height="80" alt="Chatt Crime" />
 				</div>
 			</div>
-
+			<!-- Nav Buttons -->
 			<div class="col-2-3">
 				<div class="module">
 					<div id="panel">
 						<button onclick="toggleHeatmap()">Toggle Heatmap</button>
-						<button onclick="changeGradient()">Change gradient</button>
+						<button onclick="changeGradient()">Change Gradient</button>
 					</div>
 				</div>
 			</div>
-			
 		</div>
 	</header>
+	<!-- Map Container -->
 	<div id="map-canvas"></div>
 </body>
 </html>
