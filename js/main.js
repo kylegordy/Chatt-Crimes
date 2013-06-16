@@ -6343,6 +6343,7 @@ function initialize() {
   var mapOptions = {
     zoom: 15,
     panControl: false,
+    zoomControl: false,
     // Code below loaded Chattanooga first then proceeded to geolocate your position
     /* center: new google.maps.LatLng(35.04563, -85.30968), */
     mapTypeId: google.maps.MapTypeId.HYBRID
