@@ -6,21 +6,21 @@ var y = [];
 
 function initialize() {
   alert("'shits and giggles'");
-  jQuery.getJSON('http://opendata.chattlibrary.org/api/action/datastore/search.json?resource_id=7cefb5e8-f0be-4fca-ad3e-ef6cf4ac45a5&limit=10&filter[code]=120', function(data) {
+  jQuery.getJSON('http://opendata.chattlibrary.org/api/action/datastore/search.json?resource_id=7cefb5e8-f0be-4fca-ad3e-ef6cf4ac45a5&limit=20&filter[code]=120', function(data) {
       // alert("'Key = '");
       $.each(data.records, function(index, value) {
           if ($.inArray(value.casenumber, y)==-1){
               if(value.casenumber != ""){
                   if(value.lat != "0" ){
-                    y.push("new google.maps.LatLng("+data.records[index].lat+"\, "+data.records[index].lon+")");
-                    burglaryData.push("new google.maps.LatLng("+data.records[index].lat+"\, "+data.records[index].lon+")");
+                    y.push(new google.maps.LatLng(data.records[index].lat,data.records[index].lon));
+                    burglaryData.push(new google.maps.LatLng(value.lat, value.lon));
 
                   }
               }
           }
       });
   });
-  
+  alert(y);
   alert(burglaryData);
 	// Global Map Options
   var mapOptions = {
