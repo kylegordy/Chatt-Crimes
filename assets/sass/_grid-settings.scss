@@ -1,13 +1,15 @@
 @import "neat/neat-helpers";
 
-$visual-grid : false;
+$visual-grid: false;
+$visual-grid-index: front;
+$visual-grid-color: $light-grey;
 $visual-grid-opacity: 0.3;
 
 $column: golden-ratio(1em, 3);
 $gutter: golden-ratio(1em, 1);
 $grid-columns: 12;
-$max-width: 95%; // desired page width, baseline font size – http://bourbon.io/docs/#px-to-em
+$max-width: 100%;
 
-$small: new-breakpoint(min-width em(500, 16) 12);
-$medium: new-breakpoint(min-width em(700, 17) 12);
-$large: new-breakpoint(min-width 1100px 12);
+$small: new-breakpoint(min-width em(600, 16) 12);
+$medium: new-breakpoint(min-width em(800, 17) 12);
+$large: new-breakpoint(min-width 1200px 12);
