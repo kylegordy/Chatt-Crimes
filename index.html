@@ -8,6 +8,11 @@
   <title>Chatt Crimes</title>
   <link rel="stylesheet" href="assets/css/global.css">
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=visualization"></script>
+  
+  <!-- jQuery -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+
   <script src="assets/js/data.js"></script>
   <script src="assets/js/map.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="assets/images/icons/favicon.ico" />
@@ -27,13 +32,14 @@
   <header>
     <h1>Chatt Crimes</h1>
     <nav>
-      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
-      <button onclick="changeGradient()">Change Gradient</button>
+      <a class="menu" href="#">Filters</a>
     </nav>
   </header>
   <!-- Map -->
   <div class="map-wraper">
-    <nav>
+    <nav class="side-menu">
+      <a href="#" onclick="toggleHeatmap()">Toggle Heatmap</a>
+      <a href="#" onclick="changeGradient()">Change Gradient</a>
       <a href="#">Auto Theft</a>
       <a href="#">Aggravated Assault</a>
       <a href="#">Burglary</a>
@@ -45,5 +51,6 @@
     </nav>
     <div id="map-canvas"></div>
   </div>
+  <script src="assets/js/menu.js"></script>
 </body>
 </html>

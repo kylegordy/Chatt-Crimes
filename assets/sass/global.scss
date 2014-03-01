@@ -80,28 +80,30 @@ h1 {
   padding: 0;
 }
 
+a {
+  color: $dark-grey;
+  text-decoration: none;
+}
+
 header {
   height: 4.5em;
   padding: 0;
   background-color: #fff;
   @include outer-container;
-  @include pad(0 2.5% 0 2.5%);
+  @include pad(0 1em 0 1.25em);
 
   @include media($small) {
     height: $header-height;
   }
 
   h1 {
-    display: none;
-    display: block;
     font-size: 1.75em;
     line-height: 1;
     @extend %vertical-align;
-    @include span-columns(12);
+    @include span-columns(9);
 
     @include media($small) {
       font-size: 2.5em;
-      @include span-columns(6);
     }
 
     @include media($medium) {
@@ -111,33 +113,24 @@ header {
   }
 
   nav {
-    display: none;
+    position: relative;
+    z-index: 1;
+    @extend %vertical-align;
+    @include span-columns(3);
+    @include omega();
 
-    @include media($small) {
-      position: relative;
-      z-index: 1;
-      @extend %vertical-align;
-      @include span-columns(6);
-      @include omega();
-    }
-
-    button {
+    a {
       float: right;
       margin: 0 0 0 .85em;
       padding: .25em .5em .25em .5em;
-      font-size: .9em;
-      background-color: transparent;
+      font-size: 1em;
       border: solid 1px $light-grey;
       @include transition (all .3s ease-in-out);
 
-      @include media($medium) {
-        font-size: .95em;
+      &:hover {
+        border: solid 1px $dark-grey;
       }
 
-    }
-
-    button:hover {
-      border: solid 1px $dark-grey;
     }
 
   }
@@ -165,16 +158,29 @@ header {
     height: 100%;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
+    background-color: #fff;
     border-top: solid 1px $light-grey;
-    @include span-columns(3, block-collapse);
+    @include span-columns(8, block-collapse);
+    @include transition (all .2s ease-in-out);
+
+    @include media($small) {
+      @include span-columns(4, block-collapse);
+    }
+
+    @include media($medium) {
+      @include span-columns(3, block-collapse);
+    }
+
+    @include media($large) {
+      @include span-columns(2, block-collapse);
+    }
+
   }
 
   a {
     display: block;
-    padding: .5em 0 .5em 1em;
+    padding: .5em 0 .5em 1.25em;
     border-bottom: solid 1px $light-grey;
-    color: $dark-grey;
-    text-decoration: none;
     @include transition (all .2s ease-in-out);
 
     &:hover {
@@ -185,8 +191,24 @@ header {
 
 }
 
+.active-sidebar .map-wraper nav {
+  @include shift(-8);
+
+  @include media($small) {
+    @include shift(-4);
+  }
+
+  @include media($medium) {
+    @include shift(-3);
+  }
+
+  @include media($large) {
+    @include shift(-2);
+  }
+
+}
+
 #map-canvas {
   height: 100%;
-  @include span-columns(9);
-  @include omega();
+  background-color: $light-grey;
 }
