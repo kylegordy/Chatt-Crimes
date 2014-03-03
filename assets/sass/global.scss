@@ -90,7 +90,7 @@ header {
   padding: 0;
   background-color: #fff;
   @include outer-container;
-  @include pad(0 1em 0 1.25em);
+  @include pad(0 1em 0 1em);
 
   @include media($small) {
     height: $header-height;
