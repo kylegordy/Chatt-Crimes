@@ -71,11 +71,6 @@ function handleNoGeolocation(errorFlag) {
   map.setCenter(options.position);
 }
 
-// Button Variables
-function toggleHeatmap() {
-  heatmap.setMap(heatmap.getMap() ? null : map);
-}
-
 // Change Gradient Button
 function changeGradient() {
   var gradient = [
