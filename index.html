@@ -2,17 +2,12 @@
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js active-sidebar"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <title>Chatt Crimes</title>
   <link rel="stylesheet" href="assets/css/global.css">
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=visualization"></script>
-  
-  <!-- jQuery -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-
   <script src="assets/js/data.js"></script>
   <script src="assets/js/map.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="assets/images/icons/favicon.ico" />
@@ -32,14 +27,14 @@
   <header>
     <h1>Chatt Crimes</h1>
     <nav>
-      <a class="menu" href="#">Filters</a>
+      <a id="menu" href="javascript:;">Filters</a>
     </nav>
   </header>
   <!-- Map -->
   <div class="map-wraper">
     <nav class="side-menu">
-      <a href="#" onclick="toggleHeatmap()">Toggle Heatmap</a>
       <a href="#" onclick="changeGradient()">Change Gradient</a>
+      <a href="#">All Crimes</a>
       <a href="#">Auto Theft</a>
       <a href="#">Aggravated Assault</a>
       <a href="#">Burglary</a>
