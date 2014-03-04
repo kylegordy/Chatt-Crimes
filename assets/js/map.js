@@ -52,6 +52,64 @@ function initialize() {
   }
 }
 
+
+function selectedData(crimeType){
+  heatmap.setMap();
+
+  if (crimeType === 'autoTheft')
+    {
+      pointArray = autoTheft;
+    }
+  else if (crimeType === 'aggravatedAssault')
+    {
+      pointArray = aggravatedAssault;
+    }
+  else if (crimeType === 'burglary')
+    {
+      pointArray = burglary;
+    }
+  else if (crimeType === 'homicide')
+    {
+      pointArray = homicide;
+    }
+  else if (crimeType === 'robbery')
+    {
+      pointArray = robbery;
+    }
+  else if (crimeType === 'simpleAssault')
+    {
+      pointArray = simpleAssault;
+    }
+  else if (crimeType === 'theft')
+    {
+      pointArray = theft;
+    }
+  else if (crimeType === 'vandalism')
+    {
+      pointArray = vandalism;
+    }
+
+  // pointArray = autoTheft;
+  heatmap = new google.maps.visualization.HeatmapLayer({
+    data: pointArray,
+    radius: 25,
+    maxIntensity: 10,
+    opacity: 0.75
+  });
+
+  heatmap.setMap(map);
+ 
+
+}
+
+// Clear Heatmap of any data
+function clearHeatmap() {
+  heatmap.setMap();
+}
+
+
+
+
 // Geolocation Error Notice
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
