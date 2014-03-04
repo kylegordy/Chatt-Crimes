@@ -14,9 +14,9 @@ gulp.task('compile-sass', function() {
         .pipe(gulp.dest('assets/css'))
 });
 
-// start a server and watch for html and css changes
+// start a server and watch for html, css and js changes
 gulp.task('browser-sync', function() {  
-    browserSync.init(["assets/css/*.css", "**/*.html"], {
+    browserSync.init(["assets/css/*.css", "*.html", "assets/js/*.js"], {
         server: {
             baseDir: "./"
         }
