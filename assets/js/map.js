@@ -14,7 +14,7 @@ function initialize() {
       mapOptions);
    
   // Heatmap
-  var pointArray = new google.maps.MVCArray(burglaryData);
+  var pointArray = new google.maps.MVCArray(aggravatedAssault);
 
   heatmap = new google.maps.visualization.HeatmapLayer({
     data: pointArray,
@@ -72,22 +72,15 @@ function selectedData(crimeType){
     {
       pointArray = homicide;
     }
-  else if (crimeType === 'robbery')
-    {
-      pointArray = robbery;
-    }
-  else if (crimeType === 'simpleAssault')
-    {
-      pointArray = simpleAssault;
-    }
   else if (crimeType === 'theft')
     {
       pointArray = theft;
     }
-  else if (crimeType === 'vandalism')
+  else if (crimeType === 'drugs')
     {
-      pointArray = vandalism;
+      pointArray = drugs;
     }
+ 
 
   // pointArray = autoTheft;
   heatmap = new google.maps.visualization.HeatmapLayer({
