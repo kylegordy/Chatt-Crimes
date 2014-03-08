@@ -175,15 +175,19 @@ header {
       @include span-columns(2, block-collapse);
     }
 
-  }
+    a {
+      display: block;
+      padding: .5em 0 .5em 1.25em;
+      border-bottom: solid 1px $light-grey;
+      @include transition (all .2s ease-in-out);
 
-  a {
-    display: block;
-    padding: .5em 0 .5em 1.25em;
-    border-bottom: solid 1px $light-grey;
-    @include transition (all .2s ease-in-out);
+      &:hover {
+        background-color: $light-grey;
+      }
 
-    &:hover {
+    }
+
+    .selected {
       background-color: $light-grey;
     }
 
