@@ -19,7 +19,7 @@
   <!-- IOS Specific Web App Styles -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <!-- iPhone 4 App Screen-->
-  <link rel="apple-touch-startup-image" href="assets/images/apple-touch-startup-image-640x920.png" /> 
+  <link rel="apple-touch-startup-image" href="assets/images/apple-touch-startup-image-640x920.png" />
   <!-- iPhone 5 App Screen-->
   <link href="assets/images/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 </head>
@@ -33,13 +33,13 @@
   <!-- Map -->
   <div class="map-wraper">
     <nav class="side-menu">
-      <a href="javascript:;" onclick="javascript:showlocation()">My Location</a>
-      <a href="javascript:;" onclick="selectedData('aggravatedAssault')">Aggravated Assault</a>      
-      <a href="javascript:;" onclick="selectedData('autoTheft')">Auto Theft</a>
-      <a href="javascript:;" onclick="selectedData('burglary')">Burglary</a>
-      <a href="javascript:;" onclick="selectedData('drugs')">Drugs</a>
-      <a href="javascript:;" onclick="selectedData('homicide')">Homicide</a>
-      <a href="javascript:;" onclick="selectedData('theft')">Theft</a>
+      <a href="javascript:;" onclick="javascript:showlocation()" id="myLocation">My Location</a>
+      <a href="javascript:;" onclick="selectedData('aggravatedAssault')" id="aggravatedAssault">Aggravated Assault</a>
+      <a href="javascript:;" onclick="selectedData('autoTheft')" id="autoTheft">Auto Theft</a>
+      <a href="javascript:;" onclick="selectedData('burglary')" id="burglary">Burglary</a>
+      <a href="javascript:;" onclick="selectedData('drugs')" id="drugs">Drugs</a>
+      <a href="javascript:;" onclick="selectedData('homicide')" id="homicide">Homicide</a>
+      <a href="javascript:;" onclick="selectedData('theft')" id="theft">Theft</a>
     </nav>
     <div id="map-canvas"></div>
   </div>
