@@ -66,8 +66,10 @@ function selectedData(crimeType){
     }
   else if (crimeType === 'aggravatedAssault')
     {
-      pointArray = aggravatedAssault;
-      document.getElementById('aggravatedAssault').style.background ='#cbcbcb';
+      getDataWithCode({code: '13A', data: []}, function(data){ 
+        pointArray = data;
+        document.getElementById('aggravatedAssault').style.background ='#cbcbcb';
+      });
     }
   else if (crimeType === 'burglary')
     {
@@ -116,16 +118,18 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-  // Display Heatmap
-  var pointArray = new google.maps.MVCArray(aggravatedAssault);
+  getDataWithCode({code: '13A', data: []}, function(data){ 
+    // Display Heatmap
+    var pointArray = new google.maps.MVCArray(data);
 
-  heatmap = new google.maps.visualization.HeatmapLayer({
-    data: pointArray,
-    radius: 25,
-    maxIntensity: 10,
-    opacity: 0.75
+    heatmap = new google.maps.visualization.HeatmapLayer({
+      data: pointArray,
+      radius: 25,
+      maxIntensity: 10,
+      opacity: 0.75
+    });
+
+    heatmap.setMap(map);
   });
-
-  heatmap.setMap(map);
 
 }
