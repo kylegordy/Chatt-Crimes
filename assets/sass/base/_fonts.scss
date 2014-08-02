@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../../fonts/ubuntu/regular/ubuntu-r-webfont.eot');
+  src: url('../../fonts/ubuntu/regular/ubuntu-r-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../../fonts/ubuntu/regular/ubuntu-r-webfont.woff') format('woff'),
+       url('../../fonts/ubuntu/regular/ubuntu-r-webfont.ttf') format('truetype'),
+       url('../../fonts/ubuntu/regular/ubuntu-r-webfont.svg#ubunturegular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../../fonts/ubuntu/bold/ubuntu-b-webfont.eot');
+  src: url('../../fonts/ubuntu/bold/ubuntu-b-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../../fonts/ubuntu/bold/ubuntu-b-webfont.woff') format('woff'),
+       url('../../fonts/ubuntu/bold/ubuntu-b-webfont.ttf') format('truetype'),
+       url('../../fonts/ubuntu/bold/ubuntu-b-webfont.svg#ubuntubold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
