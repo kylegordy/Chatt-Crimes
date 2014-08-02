@@ -108,8 +108,11 @@ function selectedData(crimeType){
     }
   else if (crimeType === 'theft')
     {
-      pointArray = theft;
-      document.getElementById('theft').style.background ='#cbcbcb';
+      getDataWithCodes({codes: ['23A','23B','23C','23D','23E','23F','23G','23H']}, function(data){
+        pointArray = data;
+        document.getElementById('theft').style.background ='#cbcbcb';
+        setHeatMap(pointArray);
+      });
     }
   else if (crimeType === 'drugs')
     {
