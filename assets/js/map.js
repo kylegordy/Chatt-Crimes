@@ -110,8 +110,11 @@ function selectedData(crimeType){
     }
   else if (crimeType === 'drugs')
     {
-      pointArray = drugs;
-      document.getElementById('drugs').style.background ='#cbcbcb';
+      getDataWithCode({code: '35A'}, function(data){
+        pointArray = data;
+        document.getElementById('drugs').style.background ='#cbcbcb';
+        setHeatMap(pointArray);
+      });
     }
 
 
