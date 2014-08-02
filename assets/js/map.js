@@ -186,7 +186,7 @@ function initMap() {
 
   heatmap.setMap(map);
 
-  getDataWithCodesFaster({codes: ['13A'], points: pointArray}, function(data){
+  getDataWithCodes({codes: ['13A'], points: pointArray}, function(data){
     spinner.stop();
   });
 
