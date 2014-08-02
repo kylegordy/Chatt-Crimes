@@ -53,3 +53,41 @@ var getDataWithCodes = function(opts, cb) {
   });
  
 };
+
+var getDataWithCodesFaster = function(opts, cb) {
+
+  $.getJSON(constructQueryUrl(opts), function(data) {
+    var casenumbers = _.isObject(opts.casenumbers) ? opts.casenumbers : {};
+
+    if (_.isObject(opts.casenumbers)) {
+      _.forEach(data, function(d) {
+        if (!opts.casenumbers[d.casenumber]){
+          casenumbers[d.casenumber] = true;
+          opts.points.push(new google.maps.LatLng(d.lat, d.long));
+        }
+      });
+    } else {
+      _.forEach(data, function(d) {
+        casenumbers[d.casenumber] = true;
+        opts.points.push(new google.maps.LatLng(d.lat, d.long));
+      });
+    }
+
+
+    if (data.length == 1000) {
+      getDataWithCodesFaster({
+        codes: opts.codes,
+        /* We're assuming empty object isn't being passed in,
+           make it if it's not */
+        casenumbers: casenumbers,
+        points: opts.points,
+        offset: calculateOffset(opts.offset, 1000)
+      }, cb);
+    }
+    else {
+     console.log( _.values(casenumbers).length);
+      return cb();
+    }
+  });
+
+};

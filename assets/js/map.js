@@ -1,5 +1,5 @@
 var map = null,
-  pointarray,
+  pointArray,
   heatmap,
   opts = {
     lines: 17, // The number of lines to draw
@@ -173,19 +173,20 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
+  // Display Heatmap
+  pointArray = new google.maps.MVCArray();
+
   spinner.spin($("#map-canvas")[0]);
-  getDataWithCodes({codes: ['13A']}, function(data){
-    // Display Heatmap
-    var pointArray = new google.maps.MVCArray(data);
+  heatmap = new google.maps.visualization.HeatmapLayer({
+    data: pointArray,
+    radius: 25,
+    maxIntensity: 10,
+    opacity: 0.75
+  });
 
-    heatmap = new google.maps.visualization.HeatmapLayer({
-      data: pointArray,
-      radius: 25,
-      maxIntensity: 10,
-      opacity: 0.75
-    });
+  heatmap.setMap(map);
 
-    heatmap.setMap(map);
+  getDataWithCodesFaster({codes: ['13A'], points: pointArray}, function(data){
     spinner.stop();
   });
 
