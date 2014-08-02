@@ -76,7 +76,7 @@ function selectedData(crimeType){
   if (crimeType === 'autoTheft')
     {
 
-      getDataWithCode({code: '240'}, function(data){
+      getDataWithCodes({codes: ['240']}, function(data){
         pointArray = data;
         document.getElementById('autoTheft').style.background ='#cbcbcb';
         setHeatMap(pointArray);
@@ -84,7 +84,7 @@ function selectedData(crimeType){
     }
   else if (crimeType === 'aggravatedAssault')
     {
-      getDataWithCode({code: '13A'}, function(data){
+      getDataWithCodes({codes: ['13A']}, function(data){
         pointArray = data;
         document.getElementById('aggravatedAssault').style.background ='#cbcbcb';
         setHeatMap(pointArray);
@@ -92,7 +92,7 @@ function selectedData(crimeType){
     }
   else if (crimeType === 'burglary')
     {
-      getDataWithCode({code: '220'}, function(data){
+      getDataWithCodes({codes: ['220']}, function(data){
         pointArray = data;
         document.getElementById('burglary').style.background ='#cbcbcb';
         setHeatMap(pointArray);
@@ -100,7 +100,7 @@ function selectedData(crimeType){
     }
   else if (crimeType === 'homicide')
     {
-      getDataWithCode({code: '09A'}, function(data){
+      getDataWithCodes({codes: ['09A']}, function(data){
         pointArray = data;
         document.getElementById('homicide').style.background ='#cbcbcb';
         setHeatMap(pointArray);
@@ -113,7 +113,7 @@ function selectedData(crimeType){
     }
   else if (crimeType === 'drugs')
     {
-      getDataWithCode({code: '35A'}, function(data){
+      getDataWithCodes({codes: ['35A']}, function(data){
         pointArray = data;
         document.getElementById('drugs').style.background ='#cbcbcb';
         setHeatMap(pointArray);
@@ -137,7 +137,7 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-  getDataWithCode({code: '13A'}, function(data){
+  getDataWithCodes({codes: ['13A']}, function(data){
     // Display Heatmap
     var pointArray = new google.maps.MVCArray(data);
 

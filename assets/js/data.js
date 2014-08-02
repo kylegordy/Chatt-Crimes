@@ -1,9 +1,20 @@
+var codeQuery = function(codes) {
+  return _.chain(codes)
+    .map(function(code) { return "code = " + "'" + code + "'"; })
+    .reduce(function(a, b) { return a + " OR " + b; })
+    .value();
+};
+
+var constructQueryUrlParams = function(opts) {
+  return $.param({
+    '$select': "lat,long,code,casenumber",
+    '$where': codeQuery(opts.codes),
+    '$offset': opts.offset === undefined ? 0 : opts.offset
+  });
+};
+
 var constructQueryUrl = function(opts) {
-  if (opts.offset === undefined) {
-    return "https://data.chattlibrary.org/resource/crime-data.json?code=" + opts.code + "&$select=lat,long,code,casenumber";
-  } else {
-    return "https://data.chattlibrary.org/resource/crime-data.json?code=" + opts.code + "&$select=lat,long,code,casenumber&$offset=" + opts.offset;
-  }
+    return "https://data.chattlibrary.org/resource/crime-data.json?" + constructQueryUrlParams(opts);
 };
 
 /* Process new data into object of casenumbers and coordinates,
@@ -24,12 +35,12 @@ var calculateOffset = function(offset, page) {
   }
 };
 
-var getDataWithCode = function(opts, cb) {
+var getDataWithCodes = function(opts, cb) {
 
   $.getJSON(constructQueryUrl(opts), function(data) {
     if (data.length == 1000) {
-      getDataWithCode({
-        code: opts.code,
+      getDataWithCodes({
+        codes: opts.codes,
         /* We're assuming empty object isn't being passed in,
            make it if it's not */
         data: processData(_.isObject(opts.data) ? opts.data : {}, data),
