@@ -1,14 +1,14 @@
-var getDataWithCode = function(opts, cb){
-  var url = ""
-  if(opts.offset === undefined){
-
-    url = "https://data.chattlibrary.org/resource/crime-data.json?code=" + opts.code + "&$select=lat,long,code,casenumber";
+var constructQueryUrl = function(opts) {
+  if (opts.offset === undefined) {
+    return "https://data.chattlibrary.org/resource/crime-data.json?code=" + opts.code + "&$select=lat,long,code,casenumber";
   } else {
-
-    url = "https://data.chattlibrary.org/resource/crime-data.json?code=" + opts.code + "&$select=lat,long,code,casenumber&$offset=" + opts.offset;
-  
+    return "https://data.chattlibrary.org/resource/crime-data.json?code=" + opts.code + "&$select=lat,long,code,casenumber&$offset=" + opts.offset;
   }
-  $.getJSON(url, function(data) {
+}
+
+var getDataWithCode = function(opts, cb) {
+
+  $.getJSON(constructQueryUrl(opts), function(data) {
     
     var options = opts;
     options.data = options.data.concat(data);
