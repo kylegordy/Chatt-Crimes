@@ -92,8 +92,11 @@ function selectedData(crimeType){
     }
   else if (crimeType === 'burglary')
     {
-      pointArray = burglary;
-      document.getElementById('burglary').style.background ='#cbcbcb';
+      getDataWithCode({code: '220'}, function(data){
+        pointArray = data;
+        document.getElementById('burglary').style.background ='#cbcbcb';
+        setHeatMap(pointArray);
+      });
     }
   else if (crimeType === 'homicide')
     {
@@ -128,7 +131,7 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-  getDataWithCode({code: '13A', data: []}, function(data){ 
+  getDataWithCode({code: '13A'}, function(data){
     // Display Heatmap
     var pointArray = new google.maps.MVCArray(data);
 
