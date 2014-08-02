@@ -100,8 +100,11 @@ function selectedData(crimeType){
     }
   else if (crimeType === 'homicide')
     {
-      pointArray = homicide;
-      document.getElementById('homicide').style.background ='#cbcbcb';
+      getDataWithCode({code: '09A'}, function(data){
+        pointArray = data;
+        document.getElementById('homicide').style.background ='#cbcbcb';
+        setHeatMap(pointArray);
+      });
     }
   else if (crimeType === 'theft')
     {
