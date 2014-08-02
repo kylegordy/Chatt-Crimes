@@ -1,4 +1,26 @@
-var map = null, pointarray, heatmap;
+var map = null,
+  pointarray,
+  heatmap,
+  opts = {
+    lines: 17, // The number of lines to draw
+    length: 20, // The length of each line
+    width: 10, // The line thickness
+    radius: 36, // The radius of the inner circle
+    corners: 1, // Corner roundness (0..1)
+    rotate: 0, // The rotation offset
+    direction: 1, // 1: clockwise, -1: counterclockwise
+    color: '#fff', // #rgb or #rrggbb or array of colors
+    speed: 1, // Rounds per second
+    trail: 100, // Afterglow percentage
+    shadow: false, // Whether to render a shadow
+    hwaccel: false, // Whether to use hardware acceleration
+    className: 'spinner', // The CSS class to assign to the spinner
+    zIndex: 2e9, // The z-index (defaults to 2000000000)
+    top: '50%', // Top position relative to parent
+    left: '50%' // Left position relative to parent
+  },
+  spinner = new Spinner(opts).spin();
+
 
 // Find Location Function
 function showlocation() {
@@ -55,42 +77,8 @@ function resetMenuBackground() {
   document.getElementById('theft').style.background ='';
 }
 
-// Select Crime Function
-function selectedData(crimeType){
-  resetMenuBackground();
-
-  if (crimeType === 'autoTheft')
-    {
-      pointArray = autoTheft;
-      document.getElementById('autoTheft').style.background ='#cbcbcb';
-    }
-  else if (crimeType === 'aggravatedAssault')
-    {
-      getDataWithCode({code: '13A', data: []}, function(data){ 
-        pointArray = data;
-        document.getElementById('aggravatedAssault').style.background ='#cbcbcb';
-      });
-    }
-  else if (crimeType === 'burglary')
-    {
-      pointArray = burglary;
-      document.getElementById('burglary').style.background ='#cbcbcb';
-    }
-  else if (crimeType === 'homicide')
-    {
-      pointArray = homicide;
-      document.getElementById('homicide').style.background ='#cbcbcb';
-    }
-  else if (crimeType === 'theft')
-    {
-      pointArray = theft;
-      document.getElementById('theft').style.background ='#cbcbcb';
-    }
-  else if (crimeType === 'drugs')
-    {
-      pointArray = drugs;
-      document.getElementById('drugs').style.background ='#cbcbcb';
-    }
+// Set heatmap in select crime function
+function setHeatMap(pointArray) {
 
   heatmap.setMap();
   heatmap = new google.maps.visualization.HeatmapLayer({
@@ -101,6 +89,73 @@ function selectedData(crimeType){
   });
 
   heatmap.setMap(map);
+
+}
+
+// Select Crime Function
+function selectedData(crimeType){
+  resetMenuBackground();
+  if (crimeType === 'autoTheft')
+    {
+      spinner.spin($("#map-canvas")[0]);
+      getDataWithCodes({codes: ['240']}, function(data){
+        pointArray = data;
+        document.getElementById('autoTheft').style.background ='#cbcbcb';
+        setHeatMap(pointArray);
+        spinner.stop();
+      });
+    }
+  else if (crimeType === 'aggravatedAssault')
+    {
+      spinner.spin($("#map-canvas")[0]);
+      getDataWithCodes({codes: ['13A']}, function(data){
+        pointArray = data;
+        document.getElementById('aggravatedAssault').style.background ='#cbcbcb';
+        setHeatMap(pointArray);
+        spinner.stop();
+      });
+    }
+  else if (crimeType === 'burglary')
+    {
+      spinner.spin($("#map-canvas")[0]);
+      getDataWithCodes({codes: ['220']}, function(data){
+        pointArray = data;
+        document.getElementById('burglary').style.background ='#cbcbcb';
+        setHeatMap(pointArray);
+        spinner.stop();
+      });
+    }
+  else if (crimeType === 'homicide')
+    {
+      spinner.spin($("#map-canvas")[0]);
+      getDataWithCodes({codes: ['09A']}, function(data){
+        pointArray = data;
+        document.getElementById('homicide').style.background ='#cbcbcb';
+        setHeatMap(pointArray);
+        spinner.stop();
+      });
+    }
+  else if (crimeType === 'theft')
+    {
+      spinner.spin($("#map-canvas")[0]);
+      getDataWithCodes({codes: ['23A','23B','23C','23D','23E','23F','23G','23H']}, function(data){
+        pointArray = data;
+        document.getElementById('theft').style.background ='#cbcbcb';
+        setHeatMap(pointArray);
+        spinner.stop();
+      });
+    }
+  else if (crimeType === 'drugs')
+    {
+      spinner.spin($("#map-canvas")[0]);
+      getDataWithCodes({codes: ['35A']}, function(data){
+        pointArray = data;
+        document.getElementById('drugs').style.background ='#cbcbcb';
+        setHeatMap(pointArray);
+        spinner.stop();
+      });
+    }
+
 
 }
 
@@ -118,7 +173,8 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-  getDataWithCode({code: '13A', data: []}, function(data){ 
+  spinner.spin($("#map-canvas")[0]);
+  getDataWithCodes({codes: ['13A']}, function(data){
     // Display Heatmap
     var pointArray = new google.maps.MVCArray(data);
 
@@ -130,6 +186,7 @@ function initMap() {
     });
 
     heatmap.setMap(map);
+    spinner.stop();
   });
 
 }
