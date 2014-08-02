@@ -66,7 +66,7 @@ function selectedData(crimeType){
     }
   else if (crimeType === 'aggravatedAssault')
     {
-      getDataWithCode({code: '13A', data: []}, function(data){ 
+      getDataWithCode({code: '13A'}, function(data){
         pointArray = data;
         document.getElementById('aggravatedAssault').style.background ='#cbcbcb';
       });
