@@ -9,5 +9,5 @@ $grid-columns: 12;
 $max-width: 100%;
 
 $small: new-breakpoint(min-width em(600, 16) 12);
-$medium: new-breakpoint(min-width em(800, 17) 12);
+$medium: new-breakpoint(min-width em(900, 17) 12);
 $large: new-breakpoint(min-width 1200px 12);

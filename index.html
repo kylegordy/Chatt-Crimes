@@ -5,22 +5,24 @@
 <!--[if gt IE 8]><!--><html class="no-js active-sidebar"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chatt Crimes</title>
-  <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+  <meta name="description" content="A web app that visualizes local Chattanooga crime data on a map.">
+  <!-- Assets -->
   <link rel="stylesheet" href="assets/css/global.css">
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=visualization"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.compat.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/spin.js/2.0.1/spin.min.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/map.js"></script>
+  <script src="assets/js/menu.js"></script>
+  <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="assets/images/icons/favicon.ico" />
-  <!-- IOS/Android Touch Icons -->
+  <!-- iOS/Android Touch Icons -->
   <meta name="apple-mobile-web-app-title" content="Chatt Crimes">
   <link rel="apple-touch-icon-precomposed" href="assets/images/icons/apple-touch-icon-precomposed.png" />
-  <meta name="viewport" content="width=device-width">
-  <meta name="viewport" content="user-scalable=1, initial-scale=1.0" />
-  <!-- IOS Specific Web App Styles -->
+  <!-- iOS Specific Web App Styles -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <!-- iPhone 4 App Screen-->
   <link rel="apple-touch-startup-image" href="assets/images/apple-touch-startup-image-640x920.png" />
@@ -52,6 +54,5 @@
     </nav>
     <div id="map-canvas"></div>
   </div>
-  <script src="assets/js/menu.js"></script>
 </body>
 </html>

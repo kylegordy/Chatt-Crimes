@@ -1,0 +1,68 @@
+.map-wraper nav {
+  height: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; // adds momentum style scrolling for iOS devices
+  border-top: solid 1px $light-grey;
+  @include span-columns(8, block-collapse);
+  @include transition (all .2s ease-in-out);
+
+  @include media($small) {
+    @include span-columns(4, block-collapse);
+  }
+
+  @include media($medium) {
+    @include span-columns(3, block-collapse);
+  }
+
+  @include media($large) {
+    @include span-columns(2.25, block-collapse);
+  }
+
+  > a {
+    display: block;
+    padding: .5em 0 .5em 1.25em;
+    border-bottom: solid 1px $light-grey;
+
+    &:hover {
+      background-color: lighten($accent-color, 50%);
+    }
+
+  }
+
+  .selected {
+    background-color: lighten($accent-color, 45%);
+  }
+
+  section {
+    padding: 0 1.25em;
+    font-size: .85em;
+
+    a {
+      color: lighten($dark-grey, 50%);
+
+      &:hover {
+        color: $accent-color;
+      }
+
+    }
+
+  }
+
+}
+
+.active-sidebar .map-wraper nav {
+  @include shift(-8);
+
+  @include media($small) {
+    @include shift(-4);
+  }
+
+  @include media($medium) {
+    @include shift(-3);
+  }
+
+  @include media($large) {
+    @include shift(-2.25);
+  }
+
+}

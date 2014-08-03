@@ -1,7 +1,7 @@
 Chatt Crimes
 ============
 
-Web app that creates a heat map based on local Chattanooga crime data.
+A web app that visualizes local Chattanooga crime data on a map. Data provided by the [Chattanooga Open Data Portal](https://data.chattlibrary.org/Public-Safety/Crime-Data/5na4-ggsr).
 
 ##Instructions for Local Development
 To replicate our development environment a number of open source tools are required, specifically:

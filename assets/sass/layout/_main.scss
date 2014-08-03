@@ -1,22 +1,15 @@
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-*:focus {
-  outline: 0;
-}
+*:focus { outline: 0; }
+
+a { -webkit-tap-highlight-color: lighten($accent-color, 50%); }
 
 ::-moz-selection { background: lighten($accent-color, 50%); color: $dark-grey; text-shadow: none; }
 ::selection { background: lighten($accent-color, 50%); color: $dark-grey; text-shadow: none; }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-body, button {
+body {
   font-family: $primary-font;
-  font-size: 16px; 
+  font-size: 16px;
   line-height: 1.55;
   color: $dark-grey;
 
@@ -38,53 +31,6 @@ a {
 
   &:hover {
     color: $dark-grey;
-  }
-
-}
-
-header {
-  height: 4.5em;
-  padding: 0;
-  background-color: #fff;
-  @include outer-container;
-  @include pad(0 1em 0 1em);
-
-  @include media($small) {
-    height: $header-height;
-  }
-
-  h1 {
-    font-size: 1.75em;
-    line-height: 1;
-    @extend %vertical-align;
-    @include span-columns(9);
-
-    @include media($medium) {
-      font-size: 2em;
-    }
-
-  }
-
-  nav {
-    position: relative;
-    z-index: 1;
-    @extend %vertical-align;
-    @include span-columns(3);
-    @include omega();
-
-    a {
-      float: right;
-      margin: 0 0 0 .85em;
-      padding: .25em .5em .25em .5em;
-      font-size: 1em;
-      border: solid 1px $light-grey;
-
-      &:hover {
-        border-color: $accent-color;
-      }
-
-    }
-
   }
 
 }

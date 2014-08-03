@@ -1,6 +1,6 @@
 .map-wraper {
   position: absolute;
-  margin-top: 4.5em;
+  margin-top: $header-height-small;
   top: 0;
   right: 0;
   bottom: 0;
@@ -8,77 +8,7 @@
   @include outer-container;
 
   @include media($small) {
-    margin-top: $header-height;
-  }
-
-  nav {
-    height: 100%;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    background-color: #fff;
-    border-top: solid 1px $light-grey;
-    @include span-columns(8, block-collapse);
-    @include transition (all .2s ease-in-out);
-
-    @include media($small) {
-      @include span-columns(4, block-collapse);
-    }
-
-    @include media($medium) {
-      @include span-columns(3, block-collapse);
-    }
-
-    @include media($large) {
-      @include span-columns(2, block-collapse);
-    }
-
-    > a {
-      display: block;
-      padding: .5em 0 .5em 1.25em;
-      border-bottom: solid 1px $light-grey;
-
-      &:hover {
-        background-color: lighten($accent-color, 50%);
-      }
-
-    }
-
-    .selected {
-      background-color: lighten($accent-color, 45%);
-    }
-
-    section {
-      padding: 0 1em;
-      font-size: .85em;
-
-      a {
-        color: lighten($dark-grey, 50%);
-
-        &:hover {
-          color: $accent-color;
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-.active-sidebar .map-wraper nav {
-  @include shift(-8);
-
-  @include media($small) {
-    @include shift(-4);
-  }
-
-  @include media($medium) {
-    @include shift(-3);
-  }
-
-  @include media($large) {
-    @include shift(-2);
+    margin-top: $header-height-large;
   }
 
 }
