@@ -43,7 +43,7 @@ function callback(position) {
   });
 
   marker.setMap(map);
-  map.setZoom(17);
+  map.setZoom(18);
   map.setCenter(marker.getPosition());
 }
 
@@ -150,7 +150,7 @@ function initMap() {
 
   var mapOptions = {
     center: new google.maps.LatLng(35.04563, -85.30968),
-    zoom: 15,
+    zoom: 14,
     panControl: false,
     zoomControl: true,
     mapTypeId: google.maps.MapTypeId.HYBRID

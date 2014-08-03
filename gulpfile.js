@@ -1,20 +1,20 @@
 // include gulp and required plugins
 var gulp = require('gulp');
-var sass = require('gulp-sass');
+var sass = require('gulp-ruby-sass');
 var browserSync = require('browser-sync');
 var notify = require('gulp-notify');
 
 // compile sass and check for errors
-gulp.task('compile-sass', function() {
-    gulp.src('assets/sass/**/*.scss')
-        .pipe(sass({ outputStyle: 'compressed' }))
+gulp.task('compile-sass', function () {
+    return gulp.src('assets/sass/global.scss')
+        .pipe(sass({ sourcemap: true, style: 'compressed'}))
         .on("error", notify.onError(function (error) {
             return "Dang! " + error.message;
         }))
-        .pipe(gulp.dest('assets/css'))
+        .pipe(gulp.dest('assets/css'));
 });
 
-// start a server and watch for html, css and js changes
+// start browser-sync and watch for html, css and js changes
 gulp.task('browser-sync', function() {  
     browserSync.init(["assets/css/*.css", "*.html", "assets/js/*.js"], {
         server: {

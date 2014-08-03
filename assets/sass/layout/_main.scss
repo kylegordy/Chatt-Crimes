@@ -2,7 +2,7 @@
 
 *:focus { outline: 0; }
 
-a { -webkit-tap-highlight-color: lighten($accent-color, 50%); }
+a { -webkit-tap-highlight-color: rgba($accent-color, .5); }
 
 ::-moz-selection { background: lighten($accent-color, 50%); color: $dark-grey; text-shadow: none; }
 ::selection { background: lighten($accent-color, 50%); color: $dark-grey; text-shadow: none; }
