@@ -75,6 +75,7 @@ function resetMenuBackground() {
   document.getElementById('drugs').style.background ='';
   document.getElementById('homicide').style.background ='';
   document.getElementById('theft').style.background ='';
+  document.getElementById('vandalism').style.background ='';
 }
 
 // Select Crime Function
@@ -137,6 +138,16 @@ function selectedData(crimeType){
       document.getElementById('drugs').style.background ='#c3ffc3';
 
       getDataWithCodes({codes: ['35A'], points: pointArray}, function(data){
+        spinner.stop();
+      });
+    }
+  else if (crimeType === 'vandalism')
+    {
+      pointArray.clear();
+      spinner.spin($("#map-canvas")[0]);
+      document.getElementById('vandalism').style.background ='#c3ffc3';
+
+      getDataWithCodes({codes: ['290'], points: pointArray}, function(data){
         spinner.stop();
       });
     }
