@@ -2,9 +2,9 @@
   height: 100%;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch; // adds momentum style scrolling for iOS devices
-  border-top: solid 1px $light-grey;
   @include span-columns(8, block-collapse);
-  @include transition (all .2s ease-in-out);
+  border-top: solid 1px $light;
+  @include transition (all .5s ease);
 
   @include media($small) {
     @include span-columns(4, block-collapse);
@@ -20,32 +20,18 @@
 
   > a {
     display: block;
-    padding: .5em 0 .5em 1.25em;
-    border-bottom: solid 1px $light-grey;
-
-    &:hover {
-      background-color: lighten($accent-color, 50%);
-    }
-
+    padding: .65em 0 .5em 1.25em;
+    color: $accent-color;
   }
 
-  .selected {
-    background-color: lighten($accent-color, 50%);
+  > a:hover, .selected {
+    color: #fff;
+    background-color: $accent-color;
   }
 
   section {
     padding: 0 1.25em;
     font-size: .85em;
-
-    a {
-      color: lighten($dark-grey, 50%);
-
-      &:hover {
-        color: $accent-color;
-      }
-
-    }
-
   }
 
 }

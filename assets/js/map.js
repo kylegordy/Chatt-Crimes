@@ -66,26 +66,12 @@ function errorHandler(error) {
   }
 
 
-// function to reset background colors of menu items
-function resetMenuBackground() {
-  document.getElementById('myLocation').style.background ='';
-  document.getElementById('aggravatedAssault').style.background ='';
-  document.getElementById('autoTheft').style.background ='';
-  document.getElementById('burglary').style.background ='';
-  document.getElementById('drugs').style.background ='';
-  document.getElementById('homicide').style.background ='';
-  document.getElementById('theft').style.background ='';
-  document.getElementById('vandalism').style.background ='';
-}
-
 // Select Crime Function
 function selectedData(crimeType){
-  resetMenuBackground();
   if (crimeType === 'autoTheft')
     {
       pointArray.clear();
       spinner.spin($("#map-canvas")[0]);
-      document.getElementById('autoTheft').style.background ='#c3ffc3';
 
       getDataWithCodes({codes: ['240'], points: pointArray}, function(){
         spinner.stop();
@@ -95,7 +81,6 @@ function selectedData(crimeType){
     {
       pointArray.clear();
       spinner.spin($("#map-canvas")[0]);
-      document.getElementById('aggravatedAssault').style.background ='#c3ffc3';
 
       getDataWithCodes({codes: ['13A'], points: pointArray}, function(){
         spinner.stop();
@@ -105,7 +90,6 @@ function selectedData(crimeType){
     {
       pointArray.clear()
       spinner.spin($("#map-canvas")[0]);
-      document.getElementById('burglary').style.background ='#c3ffc3';
 
       getDataWithCodes({codes: ['220'], points: pointArray}, function(){
         spinner.stop();
@@ -115,7 +99,6 @@ function selectedData(crimeType){
     {
       pointArray.clear()
       spinner.spin($("#map-canvas")[0]);
-      document.getElementById('homicide').style.background ='#c3ffc3';
 
       getDataWithCodes({codes: ['09A'], points: pointArray}, function(){
         spinner.stop();
@@ -125,7 +108,6 @@ function selectedData(crimeType){
     {
       pointArray.clear();
       spinner.spin($("#map-canvas")[0]);
-      document.getElementById('theft').style.background ='#c3ffc3';
 
       getDataWithCodes({codes: ['23A','23B','23C','23D','23E','23F','23G','23H'], points: pointArray}, function(){
         spinner.stop();
@@ -135,7 +117,6 @@ function selectedData(crimeType){
     {
       pointArray.clear();
       spinner.spin($("#map-canvas")[0]);
-      document.getElementById('drugs').style.background ='#c3ffc3';
 
       getDataWithCodes({codes: ['35A'], points: pointArray}, function(data){
         spinner.stop();
@@ -145,7 +126,6 @@ function selectedData(crimeType){
     {
       pointArray.clear();
       spinner.spin($("#map-canvas")[0]);
-      document.getElementById('vandalism').style.background ='#c3ffc3';
 
       getDataWithCodes({codes: ['290'], points: pointArray}, function(data){
         spinner.stop();

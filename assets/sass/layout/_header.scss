@@ -10,13 +10,10 @@ header {
   h1 {
     font-size: 1.75em;
     line-height: 1;
+    color: $dark;
+    margin: 0;
     @extend %vertical-align;
     @include span-columns(9);
-
-    @include media($medium) {
-      font-size: 2em;
-    }
-
   }
 
   nav {
@@ -25,13 +22,13 @@ header {
     @extend %vertical-align;
     @include span-columns(3);
     @include omega();
+    text-align: right;
 
     a {
-      float: right;
-      margin: 0 0 0 .85em;
-      padding: .25em 1em;
       font-size: 1em;
-      border: solid 1px $light-grey;
+      padding: .3em .85em;
+      border: solid 1px $light;
+      border-radius: 2px;
 
       &:hover {
         border-color: $accent-color;

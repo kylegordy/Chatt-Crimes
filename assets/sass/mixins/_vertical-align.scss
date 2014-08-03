@@ -5,18 +5,3 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-
-// Base
-@import "base/normalize";
-@import "base/variables";
-@import "base/fonts";
-
-// Vendor
-@import "vendor/bourbon/bourbon";
-@import "vendor/neat/neat-helpers";
-@import "base/grid-settings";
-@import "vendor/neat/neat";
-
-// Layout
-@import "layout/main";
-@import "layout/map";
