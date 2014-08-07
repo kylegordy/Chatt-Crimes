@@ -73,7 +73,7 @@ function selectedData(crimeType){
       pointArray.clear();
       spinner.spin($("#map-canvas")[0]);
 
-      getDataWithCodes({codes: ['240'], points: pointArray}, function(){
+      MapData.getDataWithCodes({codes: ['240'], points: pointArray}, function(){
         spinner.stop();
       });
     }
@@ -82,7 +82,7 @@ function selectedData(crimeType){
       pointArray.clear();
       spinner.spin($("#map-canvas")[0]);
 
-      getDataWithCodes({codes: ['13A'], points: pointArray}, function(){
+      MapData.getDataWithCodes({codes: ['13A'], points: pointArray}, function(){
         spinner.stop();
       });
     }
@@ -91,7 +91,7 @@ function selectedData(crimeType){
       pointArray.clear()
       spinner.spin($("#map-canvas")[0]);
 
-      getDataWithCodes({codes: ['220'], points: pointArray}, function(){
+      MapData.getDataWithCodes({codes: ['220'], points: pointArray}, function(){
         spinner.stop();
       });
     }
@@ -100,7 +100,7 @@ function selectedData(crimeType){
       pointArray.clear()
       spinner.spin($("#map-canvas")[0]);
 
-      getDataWithCodes({codes: ['09A'], points: pointArray}, function(){
+      MapData.getDataWithCodes({codes: ['09A'], points: pointArray}, function(){
         spinner.stop();
       });
     }
@@ -109,7 +109,7 @@ function selectedData(crimeType){
       pointArray.clear();
       spinner.spin($("#map-canvas")[0]);
 
-      getDataWithCodes({codes: ['23A','23B','23C','23D','23E','23F','23G','23H'], points: pointArray}, function(){
+      MapData.getDataWithCodes({codes: ['23A','23B','23C','23D','23E','23F','23G','23H'], points: pointArray}, function(){
         spinner.stop();
       });
     }
@@ -118,7 +118,7 @@ function selectedData(crimeType){
       pointArray.clear();
       spinner.spin($("#map-canvas")[0]);
 
-      getDataWithCodes({codes: ['35A'], points: pointArray}, function(data){
+      MapData.getDataWithCodes({codes: ['35A'], points: pointArray}, function(data){
         spinner.stop();
       });
     }
@@ -127,7 +127,7 @@ function selectedData(crimeType){
       pointArray.clear();
       spinner.spin($("#map-canvas")[0]);
 
-      getDataWithCodes({codes: ['290'], points: pointArray}, function(data){
+      MapData.getDataWithCodes({codes: ['290'], points: pointArray}, function(data){
         spinner.stop();
       });
     }
@@ -162,7 +162,7 @@ function initMap() {
 
   heatmap.setMap(map);
 
-  getDataWithCodes({codes: ['13A'], points: pointArray}, function(data){
+  MapData.getDataWithCodes({codes: ['13A'], points: pointArray}, function(data){
     spinner.stop();
   });
 

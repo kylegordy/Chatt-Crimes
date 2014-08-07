@@ -1,24 +1,26 @@
-var codeToQuery = function(code) {
+var MapData = MapData || {};
+
+MapData.codeToQuery = function(code) {
   return "code = " + "'" + code + "'";
 };
 
-var codesQuery = function(codes) {
-  return $.map(codes, function(c) { return codeToQuery(c); }).join(' OR ');
+MapData.codesQuery = function(codes) {
+  return $.map(codes, function(c) { return MapData.codeToQuery(c); }).join(' OR ');
 };
 
-var constructQueryUrlParams = function(opts) {
+MapData.constructQueryUrlParams = function(opts) {
   return $.param({
     '$select': "lat,long,code,casenumber",
-    '$where': codesQuery(opts.codes),
+    '$where': MapData.codesQuery(opts.codes),
     '$offset': opts.offset === undefined ? 0 : opts.offset
   });
 };
 
-var constructQueryUrl = function(opts) {
-  return "https://data.chattlibrary.org/resource/crime-data.json?" + constructQueryUrlParams(opts);
+MapData.constructQueryUrl = function(opts) {
+  return "https://data.chattlibrary.org/resource/crime-data.json?" + MapData.constructQueryUrlParams(opts);
 };
 
-var calculateOffset = function(offset, page) {
+MapData.calculateOffset = function(offset, page) {
   if (offset === undefined) {
     return page;
   } else {
@@ -26,9 +28,9 @@ var calculateOffset = function(offset, page) {
   }
 };
 
-var getDataWithCodes = function(opts, cb) {
+MapData.getDataWithCodes = function(opts, cb) {
 
-  $.getJSON(constructQueryUrl(opts), function(data) {
+  $.getJSON(MapData.constructQueryUrl(opts), function(data) {
     var casenumbers = $.isPlainObject(opts.casenumbers) ? opts.casenumbers : {},
       i = data.length - 1;
 
@@ -40,11 +42,11 @@ var getDataWithCodes = function(opts, cb) {
     } while (i--);
 
     if (data.length == 1000) {
-      getDataWithCodes({
+      MapData.getDataWithCodes({
         codes: opts.codes,
         casenumbers: casenumbers,
         points: opts.points,
-        offset: calculateOffset(opts.offset, 1000)
+        offset: MapData.calculateOffset(opts.offset, 1000)
       }, cb);
     }
     else {
