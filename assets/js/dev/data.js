@@ -29,14 +29,15 @@ var calculateOffset = function(offset, page) {
 var getDataWithCodes = function(opts, cb) {
 
   $.getJSON(constructQueryUrl(opts), function(data) {
-    var casenumbers = $.isPlainObject(opts.casenumbers) ? opts.casenumbers : {};
+    var casenumbers = $.isPlainObject(opts.casenumbers) ? opts.casenumbers : {},
+      i = data.length - 1;
 
-    _.forEach(data, function(d) {
-      if (casenumbers[d.casenumber] === undefined){
-        casenumbers[d.casenumber] = true;
-        opts.points.push(new google.maps.LatLng(d.lat, d.long));
+    do {
+      if (casenumbers[data[i].casenumber] === undefined){
+        casenumbers[data[i].casenumber] = true;
+        opts.points.push(new google.maps.LatLng(data[i].lat, data[i].long));
       }
-    });
+    } while (i--);
 
     if (data.length == 1000) {
       getDataWithCodes({
