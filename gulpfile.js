@@ -26,7 +26,7 @@ gulp.task('lint-js', function() {
 
 // concatenate & minify js
 gulp.task('concat-js', function() {
-    gulp.src(['./assets/js/lib/lodash.compat.min.js', './assets/js/lib/spin.min.js', './assets/js/dev/data.js', './assets/js/dev/map.js', './assets/js/dev/menu.js'])
+    gulp.src(['./assets/js/lib/spin.min.js', './assets/js/dev/data.js', './assets/js/dev/map.js', './assets/js/dev/menu.js'])
         .pipe(concat('global.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./assets/js/dist/'))

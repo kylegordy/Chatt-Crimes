@@ -1,23 +1,26 @@
-var codeQuery = function(codes) {
-  return _.chain(codes)
-    .map(function(code) { return "code = " + "'" + code + "'"; })
-    .reduce(function(a, b) { return a + " OR " + b; })
-    .value();
+var MapData = MapData || {};
+
+MapData.codeToQuery = function(code) {
+  return "code = " + "'" + code + "'";
 };
 
-var constructQueryUrlParams = function(opts) {
+MapData.codesQuery = function(codes) {
+  return $.map(codes, function(c) { return MapData.codeToQuery(c); }).join(' OR ');
+};
+
+MapData.constructQueryUrlParams = function(opts) {
   return $.param({
     '$select': "lat,long,code,casenumber",
-    '$where': codeQuery(opts.codes),
+    '$where': MapData.codesQuery(opts.codes),
     '$offset': opts.offset === undefined ? 0 : opts.offset
   });
 };
 
-var constructQueryUrl = function(opts) {
-    return "https://data.chattlibrary.org/resource/crime-data.json?" + constructQueryUrlParams(opts);
+MapData.constructQueryUrl = function(opts) {
+  return "https://data.chattlibrary.org/resource/crime-data.json?" + MapData.constructQueryUrlParams(opts);
 };
 
-var calculateOffset = function(offset, page) {
+MapData.calculateOffset = function(offset, page) {
   if (offset === undefined) {
     return page;
   } else {
@@ -25,24 +28,25 @@ var calculateOffset = function(offset, page) {
   }
 };
 
-var getDataWithCodes = function(opts, cb) {
+MapData.getDataWithCodes = function(opts, cb) {
 
-  $.getJSON(constructQueryUrl(opts), function(data) {
-    var casenumbers = _.isObject(opts.casenumbers) ? opts.casenumbers : {};
+  $.getJSON(MapData.constructQueryUrl(opts), function(data) {
+    var casenumbers = $.isPlainObject(opts.casenumbers) ? opts.casenumbers : {},
+      i = data.length - 1;
 
-    _.forEach(data, function(d) {
-      if (casenumbers[d.casenumber] === undefined){
-        casenumbers[d.casenumber] = true;
-        opts.points.push(new google.maps.LatLng(d.lat, d.long));
+    do {
+      if (casenumbers[data[i].casenumber] === undefined){
+        casenumbers[data[i].casenumber] = true;
+        opts.points.push(new google.maps.LatLng(data[i].lat, data[i].long));
       }
-    });
+    } while (i--);
 
     if (data.length == 1000) {
-      getDataWithCodes({
+      MapData.getDataWithCodes({
         codes: opts.codes,
         casenumbers: casenumbers,
         points: opts.points,
-        offset: calculateOffset(opts.offset, 1000)
+        offset: MapData.calculateOffset(opts.offset, 1000)
       }, cb);
     }
     else {
