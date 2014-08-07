@@ -2,20 +2,20 @@ var codeToQuery = function(code) {
   return "code = " + "'" + code + "'";
 };
 
-var codeQuery = function(codes) {
+var codesQuery = function(codes) {
   return $.map(codes, function(c) { return codeToQuery(c); }).join(' OR ');
 };
 
 var constructQueryUrlParams = function(opts) {
   return $.param({
     '$select': "lat,long,code,casenumber",
-    '$where': codeQuery(opts.codes),
+    '$where': codesQuery(opts.codes),
     '$offset': opts.offset === undefined ? 0 : opts.offset
   });
 };
 
 var constructQueryUrl = function(opts) {
-    return "https://data.chattlibrary.org/resource/crime-data.json?" + constructQueryUrlParams(opts);
+  return "https://data.chattlibrary.org/resource/crime-data.json?" + constructQueryUrlParams(opts);
 };
 
 var calculateOffset = function(offset, page) {
