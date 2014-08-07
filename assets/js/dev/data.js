@@ -1,8 +1,9 @@
+var codeToQuery = function(code) {
+  return "code = " + "'" + code + "'";
+};
+
 var codeQuery = function(codes) {
-  return _.chain(codes)
-    .map(function(code) { return "code = " + "'" + code + "'"; })
-    .reduce(function(a, b) { return a + " OR " + b; })
-    .value();
+  return $.map(codes, function(c) { return codeToQuery(c); }).join(' OR ');
 };
 
 var constructQueryUrlParams = function(opts) {
