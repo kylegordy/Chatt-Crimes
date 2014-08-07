@@ -29,7 +29,7 @@ var calculateOffset = function(offset, page) {
 var getDataWithCodes = function(opts, cb) {
 
   $.getJSON(constructQueryUrl(opts), function(data) {
-    var casenumbers = _.isObject(opts.casenumbers) ? opts.casenumbers : {};
+    var casenumbers = $.isPlainObject(opts.casenumbers) ? opts.casenumbers : {};
 
     _.forEach(data, function(d) {
       if (casenumbers[d.casenumber] === undefined){
