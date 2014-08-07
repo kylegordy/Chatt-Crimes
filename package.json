@@ -2,7 +2,10 @@
   "devDependencies": {
     "browser-sync": "^1.3.2",
     "gulp": "^3.8.7",
+    "gulp-concat": "^2.3.4",
+    "gulp-jshint": "^1.8.4",
     "gulp-notify": "^1.4.1",
-    "gulp-ruby-sass": "^0.7.1"
+    "gulp-ruby-sass": "^0.7.1",
+    "gulp-uglify": "^0.3.1"
   }
 }
