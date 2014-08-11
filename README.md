@@ -1,7 +1,7 @@
 Chatt Crimes
 ============
 
-A web app that visualizes Chattanooga crime data on a map (similar to a weather heat map). The project grew out of the 2013 National Day of Civic Hacking that focused on utilizing open data.
+A web app that visualizes Chattanooga crime data on a map (similar to a weather heat map). The project grew out of Chattanooga's 2013 National Day of Civic Hacking Hackathon which focused on utilizing open data.
 
 Data provided by the [Chattanooga Open Data Portal](https://data.chattlibrary.org/Public-Safety/Crime-Data/5na4-ggsr).
 
