@@ -5,8 +5,8 @@ $(document).ready(function(){
     $("html").toggleClass("active-sidebar");
   });
 
-  // toggle selected menu item
-  $('.map-wraper nav a').click(function(){
+  // add selected class to menu link
+  $('.map-wraper nav a:not(#myLocation)').click(function(){
     $('nav a').removeClass("selected");
     $(this).addClass("selected");
   });
